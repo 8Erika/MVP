@@ -1,0 +1,169 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #2e2e2e;
+  color: gold;
+  padding-top: 6rem;
+}
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+.navbar ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  padding: 1rem 2rem;
+}
+.navbar ul li + li {
+  margin-left: 1.5rem;
+}
+.navbar a {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: 1px solid gold;
+  border-radius: 2px;
+  overflow: hidden;
+  transition: color 0.3s ease, border 0.3s ease;
+}
+.navbar a:hover {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: #ffd700;
+}
+.navbar a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: gold;
+  transition: width 0.3s ease;
+}
+.navbar a:hover::after {
+  width: 100%;
+}
+
+.cards-container {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.category {
+  margin-bottom: 2rem;
+}
+
+.category h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid gold;
+  padding-bottom: 0.5rem;
+}
+
+.card {
+  background: #1e1e1e;
+  border: 1px solid gold;
+  border-radius: 4px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.card:hover,
+.card:active {
+  transform: scale(1.02);
+  border-color: gold;
+}
+
+.item-name {
+  font-size: 1.1rem;
+}
+
+.item-price {
+  font-size: 1rem;
+}
+/* Tableti i veći mobiteli */
+@media (max-width: 768px) {
+  .navbar ul {
+    padding: 0.75rem 1rem;
+  }
+  .navbar a {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  /* Slider: manja visina */
+  .slider {
+    height: 50vh;
+  }
+
+  /* Galerija: 2 stupca */
+  .folder-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Cjenik: kartice u 2 stupca */
+  .cards-container {
+    max-width: 600px;
+  }
+  .category .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Rezervacije: šire na 90% */
+  .reservation-container {
+    max-width: 90%;
+  }
+}
+/* Mali mobiteli */
+@media (max-width: 480px) {
+  /* Navigacija: vertikalno, centrirano */
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+  .navbar ul li + li {
+    margin: 0.5rem 0 0;
+  }
+
+  /* Slider: još niža visina */
+  .slider {
+    height: 40vh;
+  }
+
+  /* Galerija: 1 stupac */
+  .folder-grid {
+    grid-template-columns: 1fr;
+    padding: 0 0.5rem;
+  }
+
+  /* Cjenik: kartice pune širine */
+  .category .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Rezervacije: manje vanjske margine i razmaka */
+  .reservation-container {
+    margin: 1rem auto;
+    gap: 1rem;
+  }
+}

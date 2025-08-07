@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galerija</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul>
+        <li><a href="../Pocetna/index.html">Naslovna</a></li>
+        <li><a href="../Cjenik/index.html">Cjenik</a></li>
+        <li><a href="../Galerija/index.html">Galerija</a></li>
+        <li><a href="../Rezervacije/index.html">Rezervacije</a></li>
+      </ul>
+    </nav>
+
+    <main class="folder-grid">
+      <div class="folder" data-folder="Folder1">
+        <div class="folder-icon">📁</div>
+        <span>Folder 1</span>
+      </div>
+      <div class="folder" data-folder="Folder2">
+        <div class="folder-icon">📁</div>
+        <span>Folder 2</span>
+      </div>
+      <div class="folder" data-folder="Folder3">
+        <div class="folder-icon">📁</div>
+        <span>Folder 3</span>
+      </div>
+      <div class="folder" data-folder="Folder4">
+        <div class="folder-icon">📁</div>
+        <span>Folder 4</span>
+      </div>
+    </main>
+
+    <div class="modal" id="modal-Folder1">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Folder 1</h2>
+        <div class="modal-images">
+          <img src="Folder1/slika1.jpeg" alt="" />
+          <img src="Folder1/slika2.jpeg" alt="" />
+          <img src="Folder1/slika3.jpeg" alt="" />
+          <img src="Folder1/slika4.jpeg" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="modal-Folder2">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Folder 2</h2>
+        <div class="modal-images">
+          <img src="Folder2/slika1.jpeg" alt="" />
+          <img src="Folder2/slika2.jpeg" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <!-- … i tako redom do modal-Folder16 … -->
+
+    <script src="script.js"></script>
+  </body>
+</html>
