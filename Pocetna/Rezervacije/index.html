@@ -9,53 +9,75 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
-
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="reservation-page">
     <nav class="navbar">
       <ul>
         <li><a href="/">Naslovna</a></li>
-        <li><a href="../Cjenik/index.html">Cjenik</a></li>
-        <li><a href="../Galerija/index.html">Galerija</a></li>
-        <li><a href="index.html">Rezervacije</a></li>
+        <li><a href="/Cjenik/">Cjenik</a></li>
+        <li><a href="/Galerija/">Galerija</a></li>
+        <li><a href="/Rezervacije/">Rezervacije</a></li>
       </ul>
     </nav>
 
     <main class="reservation-container">
       <section class="step step-date">
-        <label for="res-date">Odaberite datum:</label>
+        <label for="res-date">Odaberite datum (samo petak ili subota):</label>
         <input
           type="text"
           id="res-date"
+          name="Datum rezervacije"
           placeholder="Kliknite za odabir datuma"
           readonly
         />
       </section>
 
-      <section class="step step-form" id="res-form">
+      <form
+        name="reservation"
+        id="res-form"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="step step-form"
+      >
+        <input type="hidden" name="form-name" value="reservation" />
+
+        <p class="hidden">
+          <label
+            >Ne popunjavajte ovo polje ako ste čovjek: <input name="bot-field"
+          /></label>
+        </p>
+
         <h2>Detalji rezervacije</h2>
 
         <div class="field-group">
-          <label for="res-lastname">Prezime:</label>
-          <input type="text" id="res-lastname" required />
+          <label for="res-lastname">Prezime</label>
+          <input type="text" id="res-lastname" name="Prezime" required />
         </div>
 
         <div class="field-group">
-          <label for="res-firstname">Ime:</label>
-          <input type="text" id="res-firstname" required />
+          <label for="res-firstname">Ime</label>
+          <input type="text" id="res-firstname" name="Ime" required />
         </div>
 
         <div class="field-group guests-group">
-          <label>Broj gostiju:</label>
+          <label>Broj gostiju</label>
           <button type="button" id="minus-guest">–</button>
-          <input type="number" id="res-guests" value="1" min="1" readonly />
+          <input
+            type="number"
+            id="res-guests"
+            name="Broj gostiju"
+            value="1"
+            min="1"
+            readonly
+          />
           <button type="button" id="plus-guest">+</button>
         </div>
 
         <div class="field-group">
-          <label for="res-drink">Vrsta pića:</label>
-          <select id="res-drink" required>
+          <label for="res-drink">Vrsta pića</label>
+          <select id="res-drink" name="Vrsta pića" required>
             <option value="" disabled selected>Odaberite...</option>
             <option>pelin-cola</option>
             <option>jeger-cola</option>
@@ -65,12 +87,12 @@
         </div>
 
         <div class="field-group">
-          <label for="res-email">Email adresa:</label>
-          <input type="email" id="res-email" required />
+          <label for="res-email">Email adresa</label>
+          <input type="email" id="res-email" name="Email" required />
         </div>
 
         <button type="submit" id="res-submit">Pošalji rezervaciju</button>
-      </section>
+      </form>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

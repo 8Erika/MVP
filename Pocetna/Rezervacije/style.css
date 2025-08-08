@@ -188,6 +188,11 @@ body {
 #res-submit:hover {
   background: #333;
 }
+
+.hidden {
+  display: none;
+}
+
 /* Tableti i veći mobiteli */
 @media (max-width: 768px) {
   /* Navbar */
