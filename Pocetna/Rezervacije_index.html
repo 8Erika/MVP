@@ -2,7 +2,7 @@
 <html lang="hr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Rezervacije</title>
     <link
       rel="stylesheet"
@@ -14,7 +14,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
-    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/style.css?v=5" />
   </head>
   <body class="reservation-page">
     <nav class="navbar">
@@ -38,6 +38,7 @@
         />
       </section>
 
+      <!-- Netlify forma -->
       <form
         name="reservation"
         id="res-form"
@@ -46,12 +47,14 @@
         netlify-honeypot="bot-field"
         class="step step-form"
       >
+        <!-- Netlify identifikator forme -->
         <input type="hidden" name="form-name" value="reservation" />
 
-        <p class="hidden">
+        <p class="hidden" style="display: none">
           <label
-            >Ne popunjavajte ovo polje ako ste čovjek: <input name="bot-field"
-          /></label>
+            >Ne popunjavajte ovo polje ako ste čovjek:
+            <input name="bot-field" />
+          </label>
         </p>
 
         <h2>Detalji rezervacije:</h2>
@@ -68,7 +71,13 @@
 
         <div class="field-group guests-group">
           <label>Broj gostiju:</label>
-          <button type="button" id="minus-guest">–</button>
+          <button
+            type="button"
+            id="minus-guest"
+            aria-label="Smanji broj gostiju"
+          >
+            –
+          </button>
           <input
             type="number"
             id="res-guests"
@@ -77,7 +86,13 @@
             min="1"
             readonly
           />
-          <button type="button" id="plus-guest">+</button>
+          <button
+            type="button"
+            id="plus-guest"
+            aria-label="Povećaj broj gostiju"
+          >
+            +
+          </button>
         </div>
 
         <div class="field-group">
@@ -100,8 +115,39 @@
       </form>
     </main>
 
+    <!-- Flatpickr JS -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-    <script src="assets/script.js"></script>
+    <!-- Centralni JS -->
+    <script src="assets/script.js?v=5"></script>
+
+    <!-- Inicijalizacija Flatpickra + +/− gumbi -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dateInput = document.getElementById("res-date");
+        if (dateInput) {
+          flatpickr(dateInput, {
+            dateFormat: "d.m.Y.",
+            minDate: "today",
+            locale: "hr",
+            disableMobile: false,
+          });
+        }
+
+        const minus = document.getElementById("minus-guest");
+        const plus = document.getElementById("plus-guest");
+        const guests = document.getElementById("res-guests");
+        if (minus && plus && guests) {
+          minus.addEventListener("click", () => {
+            const val = Math.max(1, parseInt(guests.value || "1", 10) - 1);
+            guests.value = String(val);
+          });
+          plus.addEventListener("click", () => {
+            const val = Math.max(1, parseInt(guests.value || "1", 10) + 1);
+            guests.value = String(val);
+          });
+        }
+      });
+    </script>
   </body>
 </html>
