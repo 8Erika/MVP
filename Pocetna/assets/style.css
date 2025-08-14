@@ -1,29 +1,38 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
+
 html,
 body {
   height: 100%;
 }
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  line-height: 1.5;
-  color: #222;
-  background: #fff;
+  background: #121212;
 }
 
-/*Navigacija*/
+:root {
+  --nav-h: 64px;
+}
+body {
+  padding-top: var(--nav-h, 64px);
+}
+[id] {
+  scroll-margin-top: var(--nav-h, 64px);
+}
+
+/* Navbar kontenjer */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  background: #1a1a1a;
+  border-bottom: 2px solid gold;
 }
-
 .navbar ul {
   display: flex;
   gap: 0.5rem;
@@ -35,84 +44,96 @@ body {
   flex-wrap: wrap;
 }
 
+/* Navigacijska traka – dodatna stilizacija linkova (TVOJ KOD) */
 .navbar a {
+  color: #fff;
   text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: 1px solid gold; /* cijeli zlatni rub */
+  border-radius: 2px; /* blago zaobljeni kutovi */
+  transition: border 0.3s ease; /* glatki prijelaz */
 }
 
-/* Slider */
-.slider {
+/* Na hover – sakrij sve osim donjeg ruba*/
+.navbar a:hover {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+/* Navigacijska traka – linkovi s animiranim zlatnim donjim rubom*/
+.navbar a {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: 1px solid gold;
+  border-radius: 2px;
+  overflow: hidden;
+  transition: color 0.3s ease, border 0.3s ease;
+}
+
+/* Sakrij gornji, lijevi i desni rub na hover */
+.navbar a:hover {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: #ffd700;
+}
+
+/* Pseudo-element za animirani donji rub */
+.navbar a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 0;
+  background: gold;
+  transition: width 0.3s ease;
+}
+/* Na hover proširi donji rub do 100%*/
+.navbar a:hover::after {
   width: 100%;
+}
+
+/* Slider full-screen */
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 .slider img {
-  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+/* aktivna slika */
+.slider img.active {
+  opacity: 1;
 }
 
-/*Footer*/
-.footer {
-  text-align: center;
-  padding: 1rem;
-  background: #f4f4f4;
-}
-.footer .social-icons a {
-  margin: 0 0.5rem;
-  color: #333;
-  font-size: 1.2rem;
-}
-
-/* Rezervacije, cijenik, galerija*/
-.folder-grid {
-  display: grid;
-  gap: 1rem;
-}
-.cards-container {
-  margin: 0 auto;
-}
-.category .card {
-  display: flex;
-}
-
-/* Var visine nav */
-:root {
-  --nav-h: 64px;
-}
-body {
-  padding-top: var(--nav-h);
-}
-[id] {
-  scroll-margin-top: var(--nav-h);
-}
-
-/*Tableti */
+/* Responsivnost za navigaciju */
 @media (max-width: 768px) {
+  .navbar ul {
+    flex-wrap: wrap;
+  }
   .navbar a {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
-  }
-  .slider {
-    height: 50vh;
-    overflow: hidden;
-  }
-  .folder-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .cards-container {
-    max-width: 600px;
-  }
-  .category .card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .reservation-container {
-    max-width: 90%;
+    font-size: 0.95rem;
+    padding: 0.45rem 0.9rem;
   }
 }
 
-/* Mobiteli */
 @media (max-width: 480px) {
   .navbar ul {
     flex-direction: column;
@@ -126,19 +147,7 @@ body {
   }
   .navbar a {
     display: block;
-    padding: 0.8rem 0;
-    font-size: 1rem;
-  }
-  .slider {
-    height: 40vh;
-    overflow: hidden;
-  }
-  .folder-grid {
-    grid-template-columns: 1fr;
-    padding: 0 0.5rem;
-  }
-  .reservation-container {
-    margin: 1rem auto;
-    gap: 1rem;
+    width: 100%;
+    max-width: 420px;
   }
 }
