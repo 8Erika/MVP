@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: #222;
+  background: #fff;
+}
+
+/*Navigacija*/
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 0.4rem 0.8rem;
+}
+
+/* Slider */
+.slider {
+  width: 100%;
+}
+.slider img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*Footer*/
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background: #f4f4f4;
+}
+.footer .social-icons a {
+  margin: 0 0.5rem;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+/* Rezervacije, cijenik, galerija*/
+.folder-grid {
+  display: grid;
+  gap: 1rem;
+}
+.cards-container {
+  margin: 0 auto;
+}
+.category .card {
+  display: flex;
+}
+
+/* Var visine nav */
+:root {
+  --nav-h: 64px;
+}
+body {
+  padding-top: var(--nav-h);
+}
+[id] {
+  scroll-margin-top: var(--nav-h);
+}
+
+/*Tableti */
+@media (max-width: 768px) {
+  .navbar a {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .slider {
+    height: 50vh;
+    overflow: hidden;
+  }
+  .folder-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cards-container {
+    max-width: 600px;
+  }
+  .category .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .reservation-container {
+    max-width: 90%;
+  }
+}
+
+/* Mobiteli */
+@media (max-width: 480px) {
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+  .navbar ul li {
+    width: 100%;
+    text-align: center;
+  }
+  .navbar a {
+    display: block;
+    padding: 0.8rem 0;
+    font-size: 1rem;
+  }
+  .slider {
+    height: 40vh;
+    overflow: hidden;
+  }
+  .folder-grid {
+    grid-template-columns: 1fr;
+    padding: 0 0.5rem;
+  }
+  .reservation-container {
+    margin: 1rem auto;
+    gap: 1rem;
+  }
+}
