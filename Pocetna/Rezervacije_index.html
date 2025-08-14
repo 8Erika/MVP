@@ -7,14 +7,8 @@
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
-      crossorigin="anonymous"
     />
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
-    />
-    <link rel="stylesheet" href="assets/style.css?v=5" />
+    <link rel="stylesheet" href="assets/style.css?v=8" />
   </head>
   <body class="reservation-page">
     <nav class="navbar">
@@ -115,39 +109,7 @@
       </form>
     </main>
 
-    <!-- Flatpickr JS -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-    <!-- Centralni JS -->
-    <script src="assets/script.js?v=5"></script>
-
-    <!-- Inicijalizacija Flatpickra + +/− gumbi -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const dateInput = document.getElementById("res-date");
-        if (dateInput) {
-          flatpickr(dateInput, {
-            dateFormat: "d.m.Y.",
-            minDate: "today",
-            locale: "hr",
-            disableMobile: false,
-          });
-        }
-
-        const minus = document.getElementById("minus-guest");
-        const plus = document.getElementById("plus-guest");
-        const guests = document.getElementById("res-guests");
-        if (minus && plus && guests) {
-          minus.addEventListener("click", () => {
-            const val = Math.max(1, parseInt(guests.value || "1", 10) - 1);
-            guests.value = String(val);
-          });
-          plus.addEventListener("click", () => {
-            const val = Math.max(1, parseInt(guests.value || "1", 10) + 1);
-            guests.value = String(val);
-          });
-        }
-      });
-    </script>
+    <script src="assets/script.js?v=8"></script>
   </body>
 </html>

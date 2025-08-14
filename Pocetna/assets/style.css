@@ -3,27 +3,20 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-html,
-body {
-  height: 100%;
-}
-body {
-  font-family: Arial, sans-serif;
-  background: #121212;
-}
-
 :root {
   --nav-h: 64px;
 }
 body {
+  background: #1a1919;
+  color: gold;
+  font-family: sans-serif;
   padding-top: var(--nav-h, 64px);
 }
 [id] {
   scroll-margin-top: var(--nav-h, 64px);
 }
 
-/* Navbar kontenjer */
+/* === NAVIGACIJA === */
 .navbar {
   position: fixed;
   top: 0;
@@ -32,6 +25,9 @@ body {
   z-index: 1000;
   background: #1a1a1a;
   border-bottom: 2px solid gold;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem 1rem;
 }
 .navbar ul {
   display: flex;
@@ -39,34 +35,11 @@ body {
   list-style: none;
   margin: 0;
   padding: 0.75rem 1rem;
-  align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
 }
-
-/* Navigacijska traka – dodatna stilizacija linkova (TVOJ KOD) */
-.navbar a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border: 1px solid gold; /* cijeli zlatni rub */
-  border-radius: 2px; /* blago zaobljeni kutovi */
-  transition: border 0.3s ease; /* glatki prijelaz */
-}
-
-/* Na hover – sakrij sve osim donjeg ruba*/
-.navbar a:hover {
-  border-top: none;
-  border-left: none;
-  border-right: none;
-}
-
-/* Navigacijska traka – linkovi s animiranim zlatnim donjim rubom*/
 .navbar a {
   position: relative;
-  color: #fff;
+  color: gold;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
@@ -76,16 +49,12 @@ body {
   overflow: hidden;
   transition: color 0.3s ease, border 0.3s ease;
 }
-
-/* Sakrij gornji, lijevi i desni rub na hover */
 .navbar a:hover {
   border-top: none;
   border-left: none;
   border-right: none;
   color: #ffd700;
 }
-
-/* Pseudo-element za animirani donji rub */
 .navbar a::after {
   content: "";
   position: absolute;
@@ -96,12 +65,11 @@ body {
   background: gold;
   transition: width 0.3s ease;
 }
-/* Na hover proširi donji rub do 100%*/
 .navbar a:hover::after {
   width: 100%;
 }
 
-/* Slider full-screen */
+/* === SLIDER === */
 .slider {
   position: relative;
   width: 100%;
@@ -110,21 +78,497 @@ body {
 }
 .slider img {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
-/* aktivna slika */
 .slider img.active {
   opacity: 1;
 }
 
-/* Responsivnost za navigaciju */
+/* === FOOTER === */
+.footer {
+  background: #1a1a1a;
+  color: gold;
+  text-align: center;
+  padding: 1rem;
+}
+.footer .social-icons a {
+  color: gold;
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer .social-icons a:hover {
+  color: #ffd700;
+}
+
+/* === CJENIK === */
+.price-page .cards-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem;
+}
+.price-page .category {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.price-page .category > h2 {
+  grid-column: 1/-1;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: gold;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(218, 165, 32, 0.3);
+  padding-bottom: 0.5rem;
+}
+.price-page .category .card {
+  background: #1a1a1a;
+  border: 1px solid rgba(218, 165, 32, 0.45);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+.price-page .category .card .item-name {
+  font-size: 1rem;
+  color: gold;
+}
+.price-page .category .card .item-price {
+  font-weight: 700;
+  color: #ffd700;
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+.price-page .category .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  border-color: gold;
+}
+
+/* === GALERIJA === */
+.folder-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem;
+}
+.folder {
+  background: #1a1a1a;
+  border: 1px solid rgba(218, 165, 32, 0.45);
+  border-radius: 12px;
+  padding: 1rem;
+  color: gold;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
+  cursor: pointer;
+}
+.folder:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  border-color: gold;
+}
+.folder-icon {
+  width: 48px;
+  height: 48px;
+  border: 1px solid gold;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+  color: gold;
+  flex: 0 0 48px;
+}
+
+/* === MODAL === */
+body.modal-open {
+  overflow: hidden;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  z-index: 2000;
+}
+.modal.open {
+  display: grid;
+  place-items: center;
+}
+.modal-content {
+  background: #161616;
+  border: 1px solid rgba(218, 165, 32, 0.45);
+  border-radius: 14px;
+  max-width: 1100px;
+  width: min(96vw, 1100px);
+  max-height: 90vh;
+  padding: 1rem 1rem 1.25rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 0.75rem;
+}
+.modal-content h2 {
+  color: gold;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  margin: 0 0.25rem;
+  border-bottom: 1px solid rgba(218, 165, 32, 0.35);
+  padding-bottom: 0.5rem;
+}
+.modal .close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  color: gold;
+  background: rgba(26, 26, 26, 0.85);
+  border: 1px solid gold;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+.modal .close:hover {
+  background: gold;
+  color: #121212;
+  transform: scale(1.05);
+}
+.modal-images {
+  margin-top: 0.25rem;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  padding: 0.25rem;
+}
+.modal-images img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border: 1px solid rgba(218, 165, 32, 0.35);
+  border-radius: 10px;
+  background: #000;
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+.modal-images img:hover {
+  transform: translateY(-2px);
+  border-color: gold;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* === VIEWER === */
+.image-viewer {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: none;
+  z-index: 3000;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.image-viewer.open {
+  display: flex;
+}
+.image-viewer img {
+  max-width: 96%;
+  max-height: 90%;
+  object-fit: contain;
+  border: 2px solid gold;
+  border-radius: 10px;
+  background: #000;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+}
+.image-viewer .viewer-close,
+.viewer-prev,
+.viewer-next {
+  background: rgba(26, 26, 26, 0.85);
+  color: gold;
+  border: 1px solid gold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+.image-viewer .viewer-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 0.4rem 0.7rem;
+  font-size: 1.4rem;
+}
+.viewer-prev,
+.viewer-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+}
+.viewer-prev {
+  left: 20px;
+}
+.viewer-next {
+  right: 20px;
+}
+.viewer-prev:hover,
+.viewer-next:hover,
+.image-viewer .viewer-close:hover {
+  background: gold;
+  color: #121212;
+  transform: translateY(-50%) scale(1.05);
+}
+.image-viewer .viewer-close:hover {
+  transform: scale(1.05);
+}
+
+/* === REZERVACIJE: centrirano, crna polja === */
+.reservation-page .reservation-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  display: grid;
+  gap: 1.2rem;
+  justify-items: center;
+}
+.reservation-page .step {
+  width: 100%;
+  max-width: 860px;
+  background: #1a1a1a;
+  border: 1px solid rgba(218, 165, 32, 0.45);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+/* Datum */
+.reservation-page .step-date label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #d8c590;
+}
+.reservation-page #res-date {
+  width: 100%;
+  max-width: 420px;
+  background: #000;
+  color: gold;
+  border: 1px solid gold;
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  cursor: pointer;
+}
+
+/* Forma: 1 kolona (mob), 2 kolone (>=700px) */
+.reservation-page .step-form {
+  display: none;
+}
+.reservation-page .step-form.active {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  justify-items: center;
+}
+.reservation-page .field-group {
+  width: 100%;
+  max-width: 420px;
+  display: grid;
+  gap: 0.4rem;
+}
+.reservation-page label {
+  color: #d8c590;
+  text-align: left;
+}
+
+/* Polja crna i nakon unosa (uklj. autofill) */
+.reservation-page input,
+.reservation-page select {
+  width: 100%;
+  background: #000;
+  color: gold;
+  border: 1px solid rgba(218, 165, 32, 0.6);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+}
+.reservation-page input::placeholder {
+  color: rgba(255, 215, 0, 0.45);
+}
+.reservation-page input:-webkit-autofill,
+.reservation-page select:-webkit-autofill {
+  -webkit-text-fill-color: gold !important;
+  transition: background-color 9999s ease-in-out 0s;
+  box-shadow: 0 0 0px 1000px #000 inset !important;
+}
+.reservation-page input:focus,
+.reservation-page select:focus {
+  outline: none;
+  border-color: #ffd700;
+  background: #000;
+  color: gold;
+}
+
+/* === Gosti +/− – FLEX, uvijek u jednom redu === */
+.reservation-page .guests-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  flex-wrap: nowrap;
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+}
+.reservation-page #minus-guest,
+.reservation-page #plus-guest {
+  flex: 0 0 40px;
+  height: 42px;
+  background: #1a1a1a;
+  color: gold;
+  border: 1px solid gold;
+  border-radius: 8px;
+  display: grid;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  margin-top: 1rem;
+}
+.reservation-page #minus-guest:hover,
+.reservation-page #plus-guest:hover {
+  background: gold;
+  color: #121212;
+  transform: scale(1.04);
+}
+.reservation-page #res-guests {
+  flex: 1 0 60px;
+  max-width: 80px;
+  text-align: center;
+  font-weight: 700;
+  background: #000;
+  color: gold;
+  border: 1px solid rgba(218, 165, 32, 0.6);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+}
+
+/* Gumb Pošalji – centriran i širok */
+.reservation-page #res-submit {
+  background: gold;
+  color: #121212;
+  border: 1px solid gold;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  max-width: 420px;
+  transition: background 0.18s ease, transform 0.18s ease;
+  margin-top: 1rem;
+}
+.reservation-page #res-submit:hover {
+  background: #ffd700;
+  transform: translateY(-1px);
+}
+
+/* Dvije kolone na širim ekranima; “gosti” i “submit” preko pune širine */
+@media (min-width: 700px) {
+  .reservation-page .step-form.active {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.25rem;
+    row-gap: 1rem;
+    justify-items: stretch;
+  }
+  .reservation-page .field-group {
+    max-width: none;
+  }
+  .reservation-page .guests-group,
+  .reservation-page #res-submit {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
+/* === FLATPICKR: crno + zlatno, “danas” lagano zlatan === */
+.flatpickr-calendar {
+  background: #1a1a1a;
+  border: 1px solid gold;
+  color: gold;
+}
+.flatpickr-months,
+.flatpickr-weekdays {
+  background: #1a1a1a;
+  color: rgba(255, 215, 0, 0.85);
+}
+span.flatpickr-weekday {
+  color: rgba(255, 215, 0, 0.85);
+}
+.flatpickr-day {
+  color: gold;
+  background: transparent;
+  border-radius: 4px;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+  color: rgba(255, 215, 0, 0.35);
+}
+.flatpickr-day.today {
+  background: none;
+  color: rgba(255, 215, 0, 0.85);
+  border: 1px solid #ffd700;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+.flatpickr-day:hover {
+  background: gold;
+  color: #121212;
+}
+.flatpickr-day.selected {
+  background: gold !important;
+  color: #121212 !important;
+  box-shadow: 0 0 8px gold;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .folder-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .price-page .category {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 @media (max-width: 768px) {
+  .folder-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .modal-images {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .navbar ul {
     flex-wrap: wrap;
   }
@@ -133,8 +577,21 @@ body {
     padding: 0.45rem 0.9rem;
   }
 }
-
+@media (max-width: 600px) {
+  .price-page .cards-container {
+    padding: 1rem 0.75rem;
+  }
+  .price-page .category {
+    grid-template-columns: 1fr;
+  }
+}
 @media (max-width: 480px) {
+  .folder-grid {
+    grid-template-columns: 1fr;
+  }
+  .modal-images {
+    grid-template-columns: 1fr;
+  }
   .navbar ul {
     flex-direction: column;
     align-items: center;
