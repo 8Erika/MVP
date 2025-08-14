@@ -134,8 +134,10 @@ body {
 }
 /* Tableti i veći mobiteli */
 @media (max-width: 768px) {
+  /* Navbar */
   .navbar ul {
     padding: 0.75rem 1rem;
+    flex-wrap: wrap; /* Omogućava prelazak u novi red */
   }
   .navbar a {
     font-size: 0.9rem;
@@ -166,6 +168,7 @@ body {
     max-width: 90%;
   }
 }
+
 /* Mali mobiteli */
 @media (max-width: 480px) {
   /* Navigacija: vertikalno, centrirano */
@@ -173,9 +176,19 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 0.5rem 0;
+    width: 100%; /* Raširi navigaciju */
+  }
+  .navbar ul li {
+    width: 100%; /* Svaki link puni širinu */
+    text-align: center;
   }
   .navbar ul li + li {
     margin: 0.5rem 0 0;
+  }
+  .navbar a {
+    display: block; /* Cijeli red klikabilan */
+    padding: 0.8rem 0;
+    font-size: 1rem;
   }
 
   /* Slider: još niža visina */
